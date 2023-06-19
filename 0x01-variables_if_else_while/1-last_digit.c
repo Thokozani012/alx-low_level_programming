@@ -6,9 +6,9 @@
 
 /* betty style doc for function main goes there */
 /**
- * main - The code checks the last digit of a random number n and determines whether number is 0, less than 6 and not , and if it is greater than 5
+ * main - Entry point
  *
- * Return: 0 (Success)
+ * Return: Always 0 (Success)
  */
 
 int main(void)

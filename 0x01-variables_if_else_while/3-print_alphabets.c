@@ -10,9 +10,14 @@ int main(void)
 
 	/* your code goes there */
 	for (x = 'a'; x <= 'z'; x++)
+{
 	putchar(x);
+}
 	for (y = 'A'; y <= 'Z'; y++)
+{
 	putchar(y);
+{
 	putchar('\n');
+}
 	return (0);
 }

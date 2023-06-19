@@ -14,7 +14,7 @@ int main(void)
 	char n = 'a';
 
 	/* your code goes there */
-	for (n = 's'; n <= 'z'; n++)
+	for (n = 'a'; n <= 'z'; n++)
 	if (n != 'q' && n != 'e')
 	putchar(n);
 	putchar('\n');

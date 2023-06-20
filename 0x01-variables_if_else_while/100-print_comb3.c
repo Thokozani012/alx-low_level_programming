@@ -19,7 +19,7 @@ int main(void)
 
 	for (a = 0; a < 10; a++)
 	{
-		for (b = a + 1; b < 10, b++)
+		for (b = a + 1; b < 10; b++)
 		{
 			if (a != b)
 			{

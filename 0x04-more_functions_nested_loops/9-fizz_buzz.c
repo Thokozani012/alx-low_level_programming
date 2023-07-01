@@ -1,8 +1,13 @@
 #include "main.h"
+#include <stdio.h>
+#include <unistd.h>
 
 /**
+ * _putchar - prints a character
+ * @c: is the character to be printed
+ *
  * _putchar_word - Prints a string of characters
- * @str - is the string to be printed
+ * @str: is the string to be printed
  *
  * int main(void) - prints numbers from 1 to 100
  *
@@ -13,7 +18,10 @@
  *
  * Return: Always 0 (Success)
  */
-
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
+}
 void _putchar_word(const char *str)
 {
 	int i = 0;

@@ -3,25 +3,22 @@
 #include <unistd.h>
 
 /**
- * _putchar - prints a character
- * @c: is the character to be printed
+ * _putchar - prints a character to a stdout
+ * @c: the character to be printed
  *
- * _putchar_word - Prints a string of characters
- * @str: is the string to be printed
- *
- * int main(void) - prints numbers from 1 to 100
- *
- * The programm prints numbers for m 1 to 100
- * It then prints Fizz in multiples of 3
- * Prints 'Buzz' in multiples of 5
- * and prints 'FizzBuzz' in multiple of 3 and 5
- *
- * Return: Always 0 (Success)
+ * Return: a character to the stdout
  */
 int _putchar(char c)
 {
 	return (write(1, &c, 1));
 }
+
+/**
+ * _putchar_word - Prints a string in a stdout
+ * @str: the string to be printed
+ *
+ * Return: The function does not return a value.
+ */
 void _putchar_word(const char *str)
 {
 	int i = 0;
@@ -32,6 +29,14 @@ void _putchar_word(const char *str)
 	}
 }
 
+/**
+ * main - Print numbers from 1 to 100
+ * Prints 'Fizz' insted of multiples of 3
+ * Prints 'Buzz' instead of multiple of 5
+ * Prints 'FizzBuzz' instead of multiple of 3 AND 5
+ *
+ * Return: Always 0 (Success)
+ */
 int main(void)
 {
 	int n;

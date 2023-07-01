@@ -39,6 +39,7 @@ void _putchar_number(int n)
 		reverse /= 10;
 	}
 }
+
 /**
  * _putchar_word - Prints a string in a stdout
  * @str: the string to be printed
@@ -91,7 +92,7 @@ int main(void)
 		{
 			_putchar_number(n);
 		}
-		
+
 		if (n < 100)
 		{
 			_putchar(' ');

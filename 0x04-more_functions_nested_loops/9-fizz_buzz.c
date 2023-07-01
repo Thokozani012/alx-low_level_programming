@@ -14,6 +14,32 @@ int _putchar(char c)
 }
 
 /**
+ * _putchar_number - Prints numbers from 0 to 100
+ * @n: numbers to be printed
+ *
+ * Return: The function is void function
+ */
+void _putchar_number(int n)
+{
+	int reverse = 0;
+
+	while (n > 0)
+	{
+		int digit = n % 10;
+
+		reverse = reverse * 10 + digit;
+		n /= 10;
+	}
+
+	while (reverse > 0)
+	{
+		int digit = reverse % 10;
+
+		_putchar(digit + '0');
+		reverse /= 10;
+	}
+}
+/**
  * _putchar_word - Prints a string in a stdout
  * @str: the string to be printed
  *
@@ -62,8 +88,18 @@ int main(void)
 			_putchar_word(word2);
 		}
 		else
-			_putchar('0' + n);
+		{
+			_putchar_number(n);
+		}
+		
+		if (n < 100)
+		{
+			_putchar(' ');
+		}
+		else
+		{
+			_putchar('\n');
+		}
 	}
-	_putchar('\n');
 	return (0);
 }

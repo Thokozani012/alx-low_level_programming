@@ -40,7 +40,6 @@ int main(int argc, char *argv[])
 			printf("Error\n");
 		}
 	}
-	
 	if (!invalidEntry)
 	{
 		printf("%d\n", sum);

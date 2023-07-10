@@ -11,9 +11,7 @@
 
 int main(int argc, char *argv[])
 {
-	int i = 0;
-	int amount = atoi(argv[i]);
-	int coinDenominations[] = {25, 10, 5, 2, 1};
+	int cents;
 	int numCoins = 0;
 
 	if (argc != 2)
@@ -22,20 +20,36 @@ int main(int argc, char *argv[])
 		return (1);
 	}
 
-	if(amount < 0)
-	{
-		printf("0\n");
-		return (0);
-	}
-	
+	cents = atoi(argv[1]);
 
-	for (size_t i = 0; i < sizeof(coinDenominations) / sizeof(coinDenominations[0]); i++)
+	while (cents > 0)
 	{
-		int currentCoins = amount / coinDenominations[i];
-		numCoins += currentCoins;
-		amount -= currentCoins * coinDenominations[i];
-	}
+		numCoins++;
+		if ((cents - 25) >= 0)
+		{
+			cents -= 25;
+			continue;
+		}
 
+		if ((cents - 10) >= 0)
+		{
+			cents -= 10;
+			continue;
+		}
+
+		if((cents - 5) >= 0)
+		{
+			cents -= 5;
+			continue;
+		}
+
+		if ((cents - 2) >= 0)
+		{
+			cents -= 2;
+			continue;
+		}
+		cents--;
+	}
 	printf("%d\n", numCoins);
 	return (0);
 }

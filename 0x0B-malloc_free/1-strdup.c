@@ -12,20 +12,28 @@
 
 char *_strdup(char *str)
 {
-	size_t length = strlen(str);
-	char *copystr = malloc((length + 1) * sizeof(char));
+	char *ar;
+	unsigned int i = 0;
+	unsigned int j = 0;
 
 	if (str == NULL)
-	{
 		return (NULL);
+
+	while (str[i])
+		i++;
+
+	ar = malloc(sizeof(char) * (i + 1));
+
+	if (ar == NULL)
+		return (NULL);
+
+	while (str[j])
+	{
+		ar[j] = str[j];
+		j++;
 	}
 
-	if (copystr == NULL)
-	{
-		printf("failed to allocate memory\n");
-		return (NULL);
-	}
-
-	strcpy(copystr, str);
-	return (copystr);
+	ar[j + 1] = 0;
+	return (ar);
 }
+

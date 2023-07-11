@@ -22,6 +22,7 @@ char *_strdup(char *str)
 
 	if (copystr == NULL)
 	{
+		printf("failed to allocate memory\n");
 		return (NULL);
 	}
 

@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 /**
- * argstorstr - concatenates all arguments
+ * argstostr - concatenates all arguments
  * @ac: argument counter
  * @av: argument vector
  *

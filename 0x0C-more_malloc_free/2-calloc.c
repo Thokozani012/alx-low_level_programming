@@ -20,8 +20,8 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 		return (NULL);
 	}
 
-	s = malloc((sizeof(int) * size) * nmemb);
-	memset(s, 0, sizeof(int) * size * nmemb);
+	s = malloc(size * nmemb);
+	memset(s, 0, size * nmemb);
 
 	if (s == NULL)
 	{

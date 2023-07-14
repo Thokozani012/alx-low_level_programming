@@ -21,11 +21,14 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	}
 
 	s = malloc(size * nmemb);
-	memset(s, 0, size * nmemb);
 
 	if (s == NULL)
 	{
 		return (NULL);
+	}
+	if (s != NULL)
+	{
+		memset(s, 0, size * nmemb);
 	}
 
 	return (s);

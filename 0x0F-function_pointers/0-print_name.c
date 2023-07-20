@@ -4,7 +4,7 @@
 /**
  * print_name - Prints a name
  * @name: name to be printed
- * @f: pointer to the function 'print_name'
+ * @f: function pointer that takes a string argument
  *
  * Return: Nothing (void function)
  */

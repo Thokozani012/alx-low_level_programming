@@ -1,69 +1,31 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
-#include "main.h"
-
-/**
- * _isdigit - checks each char of string for digit
- * @str: string to be checked
- *
- * Return: 0 on Success, 1 Otherwise.
- */
-int _isdigit(const char *str)
-{
-	char *endptr;
-
-	if (*str == '\0')
-	{
-		return (0);
-	}
-
-	strtol(str, &endptr, 10);
-	return (*endptr == '\0');
-}
 
 /**
  * main - Adds positive numbers
- * @argc: Argument count
+ * @argc: Argumemt count
  * @argv: Argument vector
  *
- * Return: 0 On success,
- * 1 if the argument(s) are not numbers AND less than zero
+ * Return: 0 on Success, Otherwise 1.
  */
 
 int main(int argc, char *argv[])
 {
-	int i;
-	long sum = 0;
-	long num;
+	int n, m;
+	int sum = 0;
 
-	if (argc < 2)
+	for (n = 1; n < argc; n++)
 	{
-		printf("%d\n", 0);
-		return (1);
-	}
-
-	for (i = 1; i < argc; i++)
-	{
-		if (_isdigit(argv[i]))
+		for (m = 0; argv[n][m] != '\0'; m++)
 		{
-			num = strtol(argv[i], NULL, 10);
-			if (num > 0)
-			{
-				sum += num;
-			}
-			else
+			if (argv[n][m] < 48 || argv[n][m] > 57)
 			{
 				printf("Error\n");
 				return (1);
 			}
 		}
-		else
-		{
-			printf("Error\n");
-			return (1);
-		}
+		sum += atoi(argv[n]);
 	}
-	printf("%ld\n", sum);
+	printf("%d\n", sum);
 	return (0);
 }

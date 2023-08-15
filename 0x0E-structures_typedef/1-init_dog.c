@@ -15,13 +15,26 @@
 
 void init_dog(struct dog *d, char *name, float age, char *owner)
 {
-	d->age = age;
 
 	d->name = malloc(sizeof(char) * (strlen(name) + 1));
 	if (d->name != NULL)
+	{
 		strcpy(d->name, name);
+	}
+	else
+	{
+		exit(98);
+	}
+
+	d->age = age;
 
 	d->owner = malloc(sizeof(char) * (strlen(owner) + 1));
 	if (d->owner != NULL)
+	{
 		strcpy(d->owner, owner);
+	}
+	else
+	{
+		exit(98);
+	}
 }

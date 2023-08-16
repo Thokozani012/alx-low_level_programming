@@ -4,12 +4,12 @@
 /**
  * print_name -  Prints a name
  * @name: Name to be printed
- * @f: function pointer
+ * @f: Pointer to a function
  *
  * Return: Nothing (void function)
  */
 
 void print_name(char *name, void (*f)(char *))
 {
-	f(name);
+	(*f)(name);
 }

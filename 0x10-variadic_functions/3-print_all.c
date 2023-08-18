@@ -15,7 +15,6 @@ void print_all(const char * const format, ...)
 	va_list args;
 	char *str;
 	int n = 0;
-	int first = 1;
 
 	va_start(args, format);
 
@@ -25,12 +24,15 @@ void print_all(const char * const format, ...)
 		{
 			case 'c':
 				printf("%c", va_arg(args, int));
+				printf(", ");
 				break;
 			case 'i':
 				printf("%d", va_arg(args, int));
+				printf(", ");
 				break;
 			case 'f':
 				printf("%f", va_arg(args, double));
+				printf(", ");
 				break;
 			case 's':
 				str = va_arg(args, char *);
@@ -43,11 +45,6 @@ void print_all(const char * const format, ...)
 			default:
 				break;
 		}
-		if (!first && format[n + 1])
-		{
-			printf(", ");
-		}
-		first = 0;
 		n++;
 	}
 	printf("\n");

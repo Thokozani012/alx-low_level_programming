@@ -45,6 +45,7 @@ void print_all(const char * const format, ...)
 				printf("%s", str);
 				break;
 			default:
+				n++;
 				continue;
 		}
 		n++;

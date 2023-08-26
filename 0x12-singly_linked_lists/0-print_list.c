@@ -87,4 +87,5 @@ size_t print_list(const list_t *h)
 {
 	print_data(h);
 	return (count_nodes(h));
+	_putchar('\n');
 }

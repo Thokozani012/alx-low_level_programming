@@ -23,21 +23,18 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	fptr = fopen(filename, "r");
 	if (fptr == NULL)
 	{
-		fclose(fptr);
 		return (0);
 	}
 
 	buffer = malloc(sizeof(char) * letters + 1);
 	if (buffer == NULL)
 	{
-		fclose(fptr);
 		return (0);
 	}
 
 	bRead = fread(buffer, sizeof(char), letters, fptr);
 	if (bRead <= 0)
 	{
-		fclose(fptr);
 		return (0);
 	}
 	buffer[bRead] = '\0';

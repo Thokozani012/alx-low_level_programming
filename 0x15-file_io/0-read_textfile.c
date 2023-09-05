@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <fcntl.h>
 #include "main.h"
 
 /**
@@ -13,15 +14,15 @@
 
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	FILE *fptr;
-	ssize_t bRead, bWrittern;
+	int fptr;
+	int bRead, bWrittern;
 	char *buffer;
 
-	if (filename == NULL)
+	if (filename == NULL || !letters)
 		return (0);
 
-	fptr = fopen(filename, "r");
-	if (fptr == NULL)
+	fptr = open(filename, O_RDONLY);
+	if (fptr < 0)
 	{
 		return (0);
 	}
@@ -32,15 +33,17 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	}
 
-	bRead = fread(buffer, sizeof(char), letters, fptr);
-	if (bRead <= 0)
+	bRead = read(fptr, buffer, letters);
+	if (bRead < 0)
 	{
+		free(buffer);
 		return (0);
 	}
 	buffer[bRead] = '\0';
 
 	bWrittern = write(STDOUT_FILENO, buffer, bRead);
-	fclose(fptr);
+	free(buffer);
+	close(fptr);
 
 	if (bWrittern == bRead)
 	{

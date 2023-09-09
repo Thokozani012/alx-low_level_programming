@@ -25,9 +25,7 @@ int main(int argc, char *argv[])
 	fd_d = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, mode);
 	if (fd_d == -1)
 	{
-		dprintf(2, "Error: Can't write to file %s\n", argv[2]);
-		close(fd_s);
-		exit(99);
+		dprintf(2, "Error: Can't write to file %s\n", argv[2]), exit(99);
 	}
 
 	while ((bRead = read(fd_s, buffer, sizeof(buffer))) > 0)

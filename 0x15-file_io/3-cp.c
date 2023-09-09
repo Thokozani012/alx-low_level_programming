@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 		{
 			bWrittern = write(file_to, buffer, bRead);
 			if (bWrittern != bRead || bWrittern == -1)
-				dprintf(2, "Error: Can't write to file %s\n", argv[2]), exit(99);
+				dprintf(2, "Error: Can't write to %s\n", argv[2]), exit(99);
 		}
 	}
 

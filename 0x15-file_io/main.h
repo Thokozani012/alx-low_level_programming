@@ -1,6 +1,8 @@
 #ifndef _MAIN_H
 #define _MAIN_H
 
+#define BUFFER_ZONE 1024
+
 #include <unistd.h>
 #include <stdlib.h>
 #include <sys/types.h>

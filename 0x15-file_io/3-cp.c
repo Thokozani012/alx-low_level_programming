@@ -36,12 +36,12 @@ int main(int argc, char *argv[])
 	}
 
 	if (bRead == -1)
-		dprintf(2, "Error: Can't close file %s\n", argv[1]), exit(98);
+		dprintf(2, "Error: Can't read file %s\n", argv[1]), exit(98);
 
 	if (close(fd_s) == -1)
-		dprintf(2, "Error: Can't close file %d\n", fd_s), exit(100);
+		dprintf(2, "Error: Can't close fd file %d\n", fd_s), exit(100);
 	if (close(fd_d) == -1)
-		dprintf(2, "Error: Can't close file %d\n", fd_d), exit(100);
+		dprintf(2, "Error: Can't close fd file %d\n", fd_d), exit(100);
 
 	return (0);
 }

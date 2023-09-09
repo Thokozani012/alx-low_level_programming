@@ -12,7 +12,7 @@
 int main(int argc, char *argv[])
 {
 	int fd_s, fd_d, bRead, bWrittern;
-	char buffer[BUFFER_ZONE];
+	char buffer[BUFFER_SIZE];
 	mode_t mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 
 	if (argc != 3)
@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 		dprintf(2, "Error: Can't write to file %s\n", argv[2]), exit(99);
 	}
 
-	while ((bRead = read(fd_s, buffer, sizeof(buffer))) > 0)
+	while ((bRead = read(fd_s, buffer, BUFFER_SIZE)) > 0)
 	{
 		bWrittern = write(fd_d, buffer, bRead);
 		if (bWrittern != bRead || bWrittern == -1)

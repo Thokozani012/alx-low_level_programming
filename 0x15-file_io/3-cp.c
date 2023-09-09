@@ -28,15 +28,19 @@ int main(int argc, char *argv[])
 		dprintf(2, "Error: Can't write to file %s\n", argv[2]), exit(99);
 	}
 
-	while ((bRead = read(fd_s, buffer, BUFFER_SIZE)) > 0)
+	bRead = 1;
+	while (bRead)
 	{
-		bWrittern = write(fd_d, buffer, bRead);
-		if (bWrittern != bRead || bWrittern == -1)
-			dprintf(2, "Error: Can't write to file %s\n", argv[2]), exit(99);
+		bRead = read(fd_s, buffer, BUFFER_SIZE);
+		if (bRead == -1)
+			dprintf(2, "Error: Can't read from file %s\n", argv[1]), exit(98);
+		if (bRead > 0)
+		{
+			bWrittern = write(fd_d, buffer, bRead);
+			if (bWrittern != bRead || bWrittern == -1)
+				dprintf(2, "Error: Can't write to file %s\n", argv[2]), exit(99);
+		}
 	}
-
-	if (bRead == -1)
-		dprintf(2, "Error: Can't read file %s\n", argv[1]), exit(98);
 
 	if (close(fd_s) == -1)
 		dprintf(2, "Error: Can't close fd file %d\n", fd_s), exit(100);

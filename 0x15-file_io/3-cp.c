@@ -11,7 +11,8 @@
 
 int main(int argc, char *argv[])
 {
-	ssize_t file_from, file_to, rd_from, wd;
+	ssize_t rd_from, wd;
+	int file_from, file_to;
 	char buffer[1024];
 
 	if (argc != 3)
@@ -21,17 +22,16 @@ int main(int argc, char *argv[])
 	file_from = open(argv[1], O_RDONLY);
 	if (file_from == -1)
 	{
-		dprintf(2, "Error Can't open file %s\n", argv[1]), exit(98);
+		dprintf(2, "Error: Can't read from file %s\n", argv[1]), exit(98);
+	}
+	file_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	if (file_to == -1)
+	{
+		dprintf(2, "Error: Can't write to %s\n", argv[2]), exit(99);
 	}
 
 	while ((rd_from = read(file_from, buffer, sizeof(buffer))) > 0)
 	{
-		file_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
-		if (file_to == -1)
-		{
-			dprintf(2, "Error: Can't open file %s\n", argv[2]), exit(99);
-		}
-
 		wd = write(file_to, buffer, rd_from);
 		if (wd == -1)
 		{
@@ -40,15 +40,15 @@ int main(int argc, char *argv[])
 	}
 	if (rd_from == -1)
 	{
-		dprintf(2, "Error: Can't read file %s\n", argv[1]), exit(98);
+		dprintf(2, "Error: Can't read from file %s\n", argv[1]), exit(98);
 	}
 	if (close(file_from) == -1)
 	{
-		dprintf(2, "Error: Can't close fd %ld\n", file_from), exit(100);
+		dprintf(2, "Error: Can't close fd %d\n", file_from), exit(100);
 	}
 	if (close(file_to) == -1)
 	{
-		dprintf(2, "Error: Can't close fd %ld\n", file_to), exit(100);
+		dprintf(2, "Error: Can't close fd %d\n", file_to), exit(100);
 	}
 	return (0);
 }

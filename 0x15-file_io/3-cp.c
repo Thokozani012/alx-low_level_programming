@@ -30,17 +30,17 @@ int main(int argc, char *argv[])
 	{
 		dprintf(2, "Error: Can't write to %s\n", argv[2]), exit(99);
 	}
-	while ((rd_from = read(file_from, buffer, sizeof(buffer))) > 0)
+	while ((rd_from = read(file_from, buffer, sizeof(buffer))))
 	{
+		if (rd_from == -1)
+		{
+			dprintf(2, "Error: Can't read from file %s\n", argv[1]), exit(98);
+		}
 		wd = write(file_to, buffer, rd_from);
 		if (wd == -1)
 		{
 			dprintf(2, "Error: Can't write to %s\n", argv[2]), exit(99);
 		}
-	}
-	if (rd_from == -1)
-	{
-		dprintf(2, "Error: Can't read from file %s\n", argv[1]), exit(98);
 	}
 	if (close(file_from) == -1)
 	{

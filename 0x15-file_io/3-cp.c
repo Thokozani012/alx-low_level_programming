@@ -13,6 +13,7 @@ int main(int argc, char *argv[])
 {
 	ssize_t rd_from, wd;
 	int file_from, file_to;
+	mode_t perm = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 	char buffer[1024];
 
 	if (argc != 3)
@@ -24,12 +25,11 @@ int main(int argc, char *argv[])
 	{
 		dprintf(2, "Error: Can't read from file %s\n", argv[1]), exit(98);
 	}
-	file_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	file_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, perm);
 	if (file_to == -1)
 	{
 		dprintf(2, "Error: Can't write to %s\n", argv[2]), exit(99);
 	}
-
 	while ((rd_from = read(file_from, buffer, sizeof(buffer))) > 0)
 	{
 		wd = write(file_to, buffer, rd_from);

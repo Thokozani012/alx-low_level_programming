@@ -40,6 +40,7 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
+	printf("ELF Header: ");
 	printf("Magic: %02x %02x %02x %02x\n",
 			elf_header.e_ident[EI_MAG0],
 			elf_header.e_ident[EI_MAG1],

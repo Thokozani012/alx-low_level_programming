@@ -7,7 +7,7 @@
   *
   * Return: On success 1, or -1 on error
   */
-int append_text_to_file(const chat *filename, char *text_content)
+int append_text_to_file(const char *filename, char *text_content)
 {
 	int fd, wd, len = 0;
 

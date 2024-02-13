@@ -7,6 +7,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <elf.h>
 
 /*function prototypes*/
 int _putchar(char c);
